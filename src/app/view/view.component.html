@@ -1,0 +1,54 @@
+<div class="container" style="max-width: 600px; min-height: 300px;">
+<div class="row">
+  <div class="col-md-12" align="center">
+      <h1>Get the weather!</h1>
+  </div>
+
+  </div>
+
+<div class="row">
+<div class="col-md-6" align="center">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group">
+    
+    <input 
+      type="text"
+      ngModel 
+      name="country" 
+      #country="ngModel"
+      class="form-control"
+      placeholder="Country..."
+      ><br>
+
+      
+      <input 
+        required
+        minlength="1"
+        type="text"
+        ngModel 
+        name="city" 
+        #city="ngModel"
+        class="form-control"
+        placeholder="City..."
+        >
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Get</button>
+</form>
+</div>
+
+
+<div class="col-md-6" align="center">
+  
+ 
+  <ul class="data-bg" *ngIf="f.submitted">   
+    <h1>{{ _city }}</h1>
+    <li> <span *ngFor="let items of condition">{{ items.main }} </span> </li> 
+    <li> {{ temperature }} °F <button (click)="convert()" type="button" class="btn btn-sm">°C</button></li>
+    <li>Humidity: {{ humidity }} %</li>
+    <li>Wind: {{ wind }} m/s</li>
+  </ul>
+</div>
+
+
+</div>
+</div>
