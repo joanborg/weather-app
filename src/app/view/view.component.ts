@@ -25,6 +25,7 @@ constructor(private _viewService: ViewService) {
 
 }
 
+
 onSubmit(f) {
   console.log(f.value.city);
   console.log(f.value.country);
@@ -34,7 +35,7 @@ onSubmit(f) {
     console.log(response);
     this.weather = response;
     console.log('temperature: ' + this.weather.main.temp);
-    this.temperature = this.weather.main.temp;
+    this.temperature = this.weather.main.temp - 273.15;
     this.humidity = this.weather.main.humidity;
     this.condition = this.weather.weather;
     this.wind = this.weather.wind.speed;
